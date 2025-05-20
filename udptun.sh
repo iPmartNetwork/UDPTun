@@ -1,16 +1,18 @@
 #!/bin/bash
 
-# Color Definitions
-RED='\033[0;31m'
+# ========== COLOR DEFINITIONS ==========
+CYAN='\033[0;36m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
-CYAN='\033[0;36m'
+RED='\033[0;31m'
 NC='\033[0m'
+WHITE='\033[1;37m'
+BLUE='\033[1;34m'
 
 SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd)"
 PYTHON_SCRIPT="$SCRIPT_PATH/udptun.py"
 
-# Check dependencies
+# ========== REQUIREMENTS ==========
 function check_requirements() {
     if ! command -v python3 >/dev/null 2>&1; then
         echo -e "${YELLOW}[!] Installing python3...${NC}"
@@ -26,7 +28,7 @@ function check_requirements() {
     fi
 }
 
-# Build systemd service file
+# ========== SYSTEMD SERVICE GENERATOR ==========
 function build_service_file() {
     local mode="$1"  # server or client
     local name="$2"
@@ -49,6 +51,7 @@ WantedBy=multi-user.target
 EOF
 }
 
+# ========== SERVER / CLIENT STARTERS ==========
 function start_server_service() {
     read -p "Port to listen on (e.g. 1111): " PORT
     read -p "Local tunnel IP (e.g. 192.168.128.1): " LOCALIP
@@ -72,6 +75,7 @@ function start_client_service() {
     echo -e "${GREEN}[+] Client service started. Log: $SCRIPT_PATH/udptun-client.log${NC}"
 }
 
+# ========== SERVICE MANAGEMENT ==========
 function stop_service() {
     local name="$1"
     if systemctl is-active --quiet udptun-$name.service; then
@@ -100,16 +104,9 @@ function remove_service() {
     echo -e "${YELLOW}[!] $name service removed.${NC}"
 }
 
+# ========== PROFESSIONAL MENU WITH LOGO ==========
 function show_menu() {
     clear
-    CYAN='\033[0;36m'
-    GREEN='\033[0;32m'
-    YELLOW='\033[1;33m'
-    RED='\033[0;31m'
-    NC='\033[0m'
-    WHITE='\033[1;37m'
-    BLUE='\033[1;34m'
-
     echo -e "${BLUE}  ____________________________________________________________________________"
     echo -e "${BLUE}      ____                             _     _"
     echo -e "${BLUE} ,   /    )                           /|   /                                 "
@@ -133,8 +130,7 @@ function show_menu() {
     echo -ne "${YELLOW}Select option [1-9]: ${NC}"
 }
 
-}
-
+# ========== MAIN ==========
 check_requirements
 
 while true; do
