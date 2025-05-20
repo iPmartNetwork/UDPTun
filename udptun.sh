@@ -102,22 +102,37 @@ function remove_service() {
 
 function show_menu() {
     clear
-    echo -e "${CYAN}"
-    echo "╔════════════════════════════════════╗"
-    echo "║      UDP Tunnel VPN Manager       ║"
-    echo "╠════════════════════════════════════╣"
-    echo "║ ${GREEN}1) Start as Server (systemd)${CYAN}         ║"
-    echo "║ ${GREEN}2) Start as Client (systemd)${CYAN}         ║"
-    echo "║ ${YELLOW}3) Show Server status/log${CYAN}            ║"
-    echo "║ ${YELLOW}4) Show Client status/log${CYAN}            ║"
-    echo "║ ${RED}5) Stop Server${CYAN}                       ║"
-    echo "║ ${RED}6) Stop Client${CYAN}                       ║"
-    echo "║ ${RED}7) Remove Server Service${CYAN}             ║"
-    echo "║ ${RED}8) Remove Client Service${CYAN}             ║"
-    echo "║ 9) Exit                              ║"
-    echo "╚════════════════════════════════════╝"
-    echo -e "${NC}"
+    CYAN='\033[0;36m'
+    GREEN='\033[0;32m'
+    YELLOW='\033[1;33m'
+    RED='\033[0;31m'
+    NC='\033[0m'
+    WHITE='\033[1;37m'
+    BLUE='\033[1;34m'
+
+    echo -e "${BLUE}  ____________________________________________________________________________"
+    echo -e "${BLUE}      ____                             _     _"
+    echo -e "${BLUE} ,   /    )                           /|   /                                 "
+    echo -e "${BLUE}-----/____/---_--_----__---)__--_/_---/-| -/-----__--_/_-----------__---)__--"
+    echo -e "${BLUE} /   /        / /  ) /   ) /   ) /    /  | /    /___) /   | /| /  /   ) /   ) "
+    echo -e "${BLUE}_/___/________/_/__/_(___(_/_____(_ __/___|/____(___ _(_ __|/_|/__(___/_/____${NC}"
+
+    echo -e "${CYAN}╔══════════════════════════════════════════════════════════════╗"
+    echo -e "║             ${GREEN}UDP Tunnel VPN Professional Manager${CYAN}           ║"
+    echo -e "╠══════════════════════════════════════════════════════════════╣"
+    echo -e "║ ${GREEN}1) Start as Server (systemd)${CYAN}                                 ║"
+    echo -e "║ ${GREEN}2) Start as Client (systemd)${CYAN}                                 ║"
+    echo -e "║ ${YELLOW}3) Show Server status/log${CYAN}                                    ║"
+    echo -e "║ ${YELLOW}4) Show Client status/log${CYAN}                                    ║"
+    echo -e "║ ${RED}5) Stop Server${CYAN}                                               ║"
+    echo -e "║ ${RED}6) Stop Client${CYAN}                                               ║"
+    echo -e "║ ${RED}7) Remove Server Service${CYAN}                                     ║"
+    echo -e "║ ${RED}8) Remove Client Service${CYAN}                                     ║"
+    echo -e "║ ${WHITE}9) Exit${CYAN}                                                      ║"
+    echo -e "╚══════════════════════════════════════════════════════════════╝${NC}"
     echo -ne "${YELLOW}Select option [1-9]: ${NC}"
+}
+
 }
 
 check_requirements
