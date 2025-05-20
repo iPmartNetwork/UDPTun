@@ -2,7 +2,7 @@
 
 REPO_URL="https://github.com/iPmartNetwork/udptun.git"
 TARGET_DIR="/opt/udptun"
-MANAGER_SCRIPT="udptun.sh"
+MANAGER_SCRIPT="udptun-manager.sh"
 
 echo "==== UDP Tunnel Auto Installer ===="
 
