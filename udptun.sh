@@ -9,6 +9,7 @@ NC='\033[0m'
 WHITE='\033[1;37m'
 BLUE='\033[1;34m'
 
+# Always use ABSOLUTE PATH for Python script
 SCRIPT_PATH="$(cd "$(dirname "$0")" && pwd)"
 PYTHON_SCRIPT="$SCRIPT_PATH/udptun.py"
 
